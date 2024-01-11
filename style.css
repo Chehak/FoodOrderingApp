@@ -9,16 +9,31 @@
 }
 
 .search-button {
-    padding: 10px;
+    position: relative;
 
 }
 
 .search-button>input {
+    z-index: 0;
+    right: 0px;
     border: 1px solid orange;
     background-color: rgba(244, 244, 244, 0.8);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    padding: 8px;
+    padding: 10px;
+    /* width: 100%; */
     border-radius: 50px;
+}
+
+.name-search {
+    color: white;
+    background-color: orange;
+    border-radius: 50px;
+    border: 1px solid orange;
+    padding: 10px;
+    /* margin: 2px; */
+    right: 0px;
+    cursor: pointer;
+    position: absolute;
 }
 
 .logo-img {
@@ -85,7 +100,6 @@
 }
 
 .cards-container {
-    /* width: 90%; */
     margin: 0px auto;
     padding-top: 20px;
 }
@@ -94,7 +108,7 @@
     background-color: #fff;
     box-shadow: 10px 10px 40px 2px rgba(128, 128, 128, 0.4);
     display: inline-block;
-    width: 247px;
+    width: 220px;
     border-radius: 10px;
     margin: 2px;
 }
@@ -166,10 +180,19 @@
     cursor: pointer;
 }
 
+.outer-container {
+    /* padding: 20px; */
+    height: 50px;
+    /* margin: 5px; */
+}
+
 .shimmer-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 55px;
+    margin: 10px;
+    /* margin-top: 55px; */
+    gap: 22px;
+    justify-content: center;
 
 }
 
@@ -177,12 +200,18 @@
     background-color: #f0f0f0;
     /* box-shadow: 10px 10px 40px 2px rgba(128, 128, 128, 0.4); */
     display: inline-block;
-    width: 259px;
-    height: 140px;
+    width: 220px;
     border-radius: 10px;
-    margin: 12px;
+    margin: 2px;
+    height: 170px;
     position: relative;
-    /* padding: 9px; */
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }
 
 .delivery-shimmer {
@@ -190,28 +219,23 @@
     top: 100px;
     right: 10px;
     background-color: #b6b6b6;
-    /* padding: 10px; */
     height: 14px;
     width: 40px;
     border-radius: 30px;
+
 }
 
-.shimmer-card-title {
-    position: absolute;
-    top: 155px;
-    left: 2px;
+.title-container .shimmer-card-title {
     background-color: #b6b6b6;
-    /* padding: 10px; */
     height: 14px;
     width: 120px;
     border-radius: 10px;
+    background: linear-gradient(to right, #f0f0f0 10%, #e0e0e0 50%, #f0f0f0 90%);
+    animation: shimmer 1.5s infinite linear;
 
 }
 
-.shimmer-card-rating {
-    position: absolute;
-    top: 150px;
-    right: 5px;
+.title-container.shimmer-card-rating {
     display: flex;
 
 }
@@ -220,17 +244,28 @@
     color: #f0f0f0;
     height: 200px;
     width: 20px;
+
+
 }
 
 .shimmer-cuisines {
-    position: absolute;
-    top: 180px;
-    left: 2px;
     background-color: #b6b6b6;
-    /* padding: 10px; */
     height: 14px;
-    width: 210px;
+    width: 100%;
+    margin-top: 5px;
     border-radius: 10px;
+    background: linear-gradient(to right, #f0f0f0 10%, #e0e0e0 50%, #f0f0f0 90%);
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100px;
+    }
+
+    100% {
+        background-position: 100px;
+    }
 }
 
 .buttons-container-shimmer {
@@ -248,6 +283,21 @@
     margin: 10px;
 }
 
-.shimmers .shimmer-container:first-child {
+/* .shimmers .shimmer-container:first-child {
     margin-top: 10px;
+} */
+
+.main-div {
+    /* min-height: 800px; */
+    max-width: 800px;
+    margin: 20px auto 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.d-time {
+    display: flex;
 }

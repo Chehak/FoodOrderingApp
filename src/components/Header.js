@@ -2,10 +2,20 @@ import newLogo from "../../logo.jpg";
 import heart from "../../icons8-heart-24.png";
 import user from "../../icons8-user-50.png";
 import cart from "../../icons8-cart-30.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [currentVal, updateVal] = useState("Login");
+  console.log("Header rendered");
+
+  const onlineStatus = useOnlineStatus();
+
+  // useEffect(() => {
+  //   console.log("useeffect rendered");
+  // }, [currentVal]);
+
   return (
     <div className="header-container">
       <div className="logo-container">
@@ -13,9 +23,19 @@ const Header = () => {
       </div>
       <div className="nav-items-container">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
           <li>Cart</li>
           <li
             onClick={() => {
