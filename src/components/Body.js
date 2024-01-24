@@ -3,13 +3,29 @@ import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import useResturantList from "../utils/useResturantsList";
 import UserContext from "../utils/UserContext";
+import { RESTURANT_LIST_API } from "../utils/constants";
 
 const Body = () => {
+  const [listOfResturants, setListofResturants] = useState([]);
+  const [filteredlistOfResturants, setFilteredListofResturants] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(RESTURANT_LIST_API);
+    const json = await data.json();
+    setListofResturants(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredListofResturants(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
-  const filteredlistOfResturants = useResturantList();
   const PromotedCard = withPromotedLabel(ResturantCard);
 
   console.log(filteredlistOfResturants);
@@ -31,11 +47,12 @@ const Body = () => {
           <input
             className="px-3 py-1 rounded-lg border border-solid border-orange-500 focus:border-orange-500"
             type="search"
+            data-testid="inputSearch"
             placeholder="Search Resturant"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
-              searchFunction(listOfResturants);
+              setFilteredListofResturants(listOfResturants);
             }}
           />
           <button
@@ -45,7 +62,7 @@ const Body = () => {
               const filtererdRes = listOfResturants?.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              searchFunction(filtererdRes);
+              setFilteredListofResturants(filtererdRes);
             }}
           >
             Search
@@ -54,12 +71,13 @@ const Body = () => {
         <div className="filter-button">
           <button
             type="button"
+            data-testid="topRatedRest"
             className="bg-orange-500 text-white rounded-lg px-3 py-1"
             onClick={() => {
               const filterList = listOfResturants.filter(
                 (res) => res.info.avgRating > 4
               );
-              searchFunction(filterList);
+              setFilteredListofResturants(filterList);
             }}
           >
             Top rating Resturants

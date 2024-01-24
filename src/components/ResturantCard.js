@@ -9,7 +9,7 @@ const ResturantCard = (props) => {
   const { name, cuisines, costForTwo, avgRating, cloudinaryImageId } =
     resObj?.info;
   return (
-    <div className="cards-container mx-0 my-auto ">
+    <div className="cards-container mx-0 my-auto " data-testid="resCard">
       <div className="w-[220px] relative bg-gray-100 m-1 rounded-lg hover:bg-slate-200 p-[4px] h-auto">
         <div
           className="bg-cover h-52 rounded-lg  m-2"
@@ -39,7 +39,7 @@ const ResturantCard = (props) => {
 
 export const withPromotedLabel = (ResturantCard) => {
   return (props) => {
-    console.log(props, "here we go");
+    // console.log(props, "here we go");
     return (
       <div>
         <label className="absolute z-50 bg-slate-950 text-white px-2 py-[2px] rounded-lg text-sm">

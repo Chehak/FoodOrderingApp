@@ -1,7 +1,9 @@
-import newLogo from "../../logo.jpg";
-import heart from "../../icons8-heart-24.png";
-import user from "../../icons8-user-50.png";
-import cart from "../../icons8-cart-30.png";
+// import heart from "../../icons8-heart-24.png";
+// import user from "../../icons8-user-50.png";
+// import cart from "../../icons8-cart-30.png";
+
+// import logo from "../images/logo.jpg";
+
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -22,7 +24,7 @@ const Header = () => {
   return (
     <div className="flex justify-between">
       <div className="logo-container">
-        <img src={newLogo} className="w-32 px-3" />
+        {/* <img src={logo} className="w-32 px-3" /> */}
       </div>
       <div className="flex">
         <ul className="flex items-center">
@@ -42,18 +44,19 @@ const Header = () => {
           <li className="px-3 font-bold text-xl">
             <Link to="/cart"> Cart ({cartItems?.length} items)</Link>
           </li>
-          <li
+          <button
+            className="p-2 m-3 bg-black text-white rounded-lg"
             onClick={() => {
               let val;
               currentVal == "Login" ? updateVal("Logout") : updateVal("Login");
             }}
           >
             {currentVal}
-          </li>
+          </button>
           <li className="px-3">{loggedInUser}</li>
         </ul>
       </div>
-      <div className="flex">
+      {/* <div className="flex">
         <ul className="flex items-center">
           <li className="px-2">
             <img src={heart} className="w-8" />
@@ -65,7 +68,7 @@ const Header = () => {
             <img src={user} className="w-8" />
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
