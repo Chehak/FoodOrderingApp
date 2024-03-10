@@ -10,11 +10,14 @@ const ResMenu = () => {
   const { resId } = useParams();
   const resInfo = useResturantMenu(resId);
 
+  console.log(resInfo, "resInfo");
+
   if (resInfo == null) return <Shimmer />;
 
   const { name, cuisines, areaName, sla, costForTwoMessage } =
     resInfo?.cards[0]?.card?.card?.info;
-  const cardsInfo = resInfo.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
+  const cardsInfo =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   const itemsFilter = cardsInfo.filter(
     (item) =>
